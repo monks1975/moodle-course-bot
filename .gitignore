@@ -1,0 +1,48 @@
+# --- Global ---
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# IDEs and text editors
+.idea/
+.vscode/
+*.sublime*
+*.swp
+*.swo
+*.swn
+
+# --- Moodle (PHP) ---
+
+# Composer dependencies
+moodle/vendor/
+
+# Config files, if you don't want to include them
+moodle/config.php
+
+# --- Svelte App ---
+
+# Node modules
+svelte-app/node_modules/
+
+# Vite cache and build
+svelte-app/.vite/
+svelte-app/dist/
+
+# Development and debugging
+svelte-app/.cache/
+svelte-app/.nyc_output/
+svelte-app/coverage/
+
+# Environment variables
+svelte-app/.env
+svelte-app/.env.local
+svelte-app/.env.*.local
+
+# TypeScript and SvelteKit
+svelte-app/*.tsbuildinfo
+svelte-app/$svelte.ts
