@@ -16,13 +16,6 @@ if ($_SERVER['HTTP_PROXY_AUTHORIZATION'] !== "Bearer " . $proxyKey || $_SERVER['
     exit;
 }
 
-// Check incoming "Proxy-Authorization" header
-if ($_SERVER['HTTP_PROXY_AUTHORIZATION'] !== "Bearer " . $proxyKey) {
-    http_response_code(401);
-    echo json_encode(["error" => "Invalid proxy access key"]);
-    exit;
-}
-
 // Get the path from the incoming request and sanitize it
 $requestPath = ltrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
