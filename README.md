@@ -52,7 +52,7 @@ services:
 1. **Navigate to the Svelte App Directory**
 
    ```bash
-   cd frontend
+   cd svelte-app
    ```
 
 2. **Install Dependencies**
@@ -65,7 +65,7 @@ services:
    ```bash
    npm run build
    ```
-   This will generate the JavaScript and CSS files required for the Moodle block, typically under a `dist` directory.
+   This will generate the code required for the Moodle block, typically under a `dist` directory.
 
 ---
 
