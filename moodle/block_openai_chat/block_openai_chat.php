@@ -54,8 +54,8 @@ class block_openai_chat extends block_base
             return null;
         }
 
-        // Use a dedicated method to fetch or generate a token.
-        $tokenString = $this->fetch_or_generate_token($service->id, $userId = 3);
+        // Use a dedicated method to fetch webuser token.
+        $tokenString = $this->fetch_token($service->id, $userId = 3);
 
         $this->enqueue_js();
         $this->initialize_content();
@@ -66,8 +66,8 @@ class block_openai_chat extends block_base
         return $this->content;
     }
 
-// Fetches or generates a new external token
-    private function fetch_or_generate_token($serviceId, $userId)
+// Fetches external token
+    private function fetch_token($serviceId, $userId)
     {
         global $DB;
 
