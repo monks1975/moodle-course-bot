@@ -1,7 +1,6 @@
 <?php
 
 //require_once $CFG->dirroot . '/lib/externallib.php';
-require_once $CFG->libdir . '/externallib.php';
 
 // Define a class for the OpenAI Chat Block, extending Moodle's base block class
 class block_openai_chat extends block_base
@@ -42,7 +41,7 @@ class block_openai_chat extends block_base
     // Function to generate the content inside the block
     public function get_content()
     {
-        global $PAGE, $COURSE, $DB, $CFG;
+        global $PAGE, $COURSE, $DB;
 
         // Early exit if content is already generated
         if ($this->content !== null) {
