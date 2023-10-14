@@ -16,6 +16,16 @@ Thumbs.db
 *.swo
 *.swn
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# --- OpenAI Proxy ---
+openai_proxy/apikey.txt
+openai_proxy/api_key.txt
+openai_proxy/key.txt
+
 # --- Moodle (PHP) ---
 
 # Composer dependencies
