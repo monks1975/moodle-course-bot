@@ -1,8 +1,27 @@
 <?php
 
-// Load API key from file
-$apiKeyFilePath = '/api_key.txt';
-$apiKey = trim(file_get_contents($apiKeyFilePath));
+// Load API keys from files
+$openAIKeyFilePath = '/keys/openai_api_key.txt';
+$openAIKey = trim(file_get_contents($openAIKeyFilePath));
+
+$proxyKeyFilePath = '/keys/proxy_key.txt';
+$proxyKey = trim(file_get_contents($proxyKeyFilePath));
+
+$allowedDomain = 'http://127.0.0.1';
+
+// Check incoming "Proxy-Authorization" header and "Origin"
+if ($_SERVER['HTTP_PROXY_AUTHORIZATION'] !== "Bearer " . $proxyKey || $_SERVER['HTTP_ORIGIN'] !== $allowedDomain) {
+    http_response_code(401);
+    echo json_encode(["error" => "Unauthorized"]);
+    exit;
+}
+
+// Check incoming "Proxy-Authorization" header
+if ($_SERVER['HTTP_PROXY_AUTHORIZATION'] !== "Bearer " . $proxyKey) {
+    http_response_code(401);
+    echo json_encode(["error" => "Invalid proxy access key"]);
+    exit;
+}
 
 // Get the path from the incoming request and sanitize it
 $requestPath = ltrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -19,7 +38,7 @@ curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $_SERVER['REQUEST_METHOD']); // Pass thr
 curl_setopt($ch, CURLOPT_POSTFIELDS, $incomingPayload);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
-    'Authorization: Bearer ' . $apiKey,
+    'Authorization: Bearer ' . $openAIKey,
 ]);
 
 // Execute and capture the response
