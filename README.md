@@ -14,12 +14,38 @@ This guide provides instructions on how to build and deploy a Moodle block with 
 
 ## Docker
 
-1. Install and run the docker containers, if you don't have a local moodle install
-
+1. **Install and run the docker containers**, if you don't have a local Moodle install.
    ```bash
    cd svelte-app
    docker-compose up -d
    ```
+
+This command will start the Docker containers based on the configuration in your `docker-compose.yml`.
+
+### **Docker Volumes and Exposed Directories**
+
+Your Docker setup exposes certain directories outside of the container, which allows for easier development and data persistence. These directories should be:
+
+- **MariaDB Data**: `/Users/[USERNAME]/documents/docker/mariadb-persistence`
+- **Moodle Data**: `/Users/[USERNAME]/documents/docker/moodle-persistence`
+
+These are mapped to `/bitnami/mariadb` and `/bitnami/moodle` inside their respective containers.
+
+```yaml
+version: '3'
+services:
+  mariadb:
+    # ...
+    volumes:
+      - /Users/[USERNAME]/documents/docker/mariadb-persistence:/bitnami/mariadb
+    # ...
+
+  moodle:
+    # ...
+    volumes:
+      - /Users/[USERNAME]/documents/docker/moodle-persistence:/bitnami/moodle
+    # ...
+```
 
 ## Building the Svelte App
 
