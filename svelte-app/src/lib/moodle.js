@@ -1,4 +1,4 @@
-// ~/frontend/src/utils/moodle.js
+// ~/svelte-app/src/lib/moodle.js
 
 const protocol = import.meta.env.VITE_MOODLE_PROTOCOL;
 const baseUrl = import.meta.env.VITE_MOODLE_BASEURL;

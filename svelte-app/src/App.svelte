@@ -1,4 +1,4 @@
-<!-- ~/frontend/src/App.svelte -->
+<!-- ~/svelte-app/src/App.svelte -->
 
 <script>
   import { onMount } from 'svelte';

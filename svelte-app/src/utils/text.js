@@ -1,4 +1,4 @@
-// ~/frontend/src/utils/text.js
+// ~/svelte-app/src/utils/text.js
 
 export class TextProcessor {
   constructor(text) {
